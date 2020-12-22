@@ -1,6 +1,5 @@
 package com.example.weather_forecast;
 
-import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -8,20 +7,19 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.lang.reflect.Field;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class secondFragment extends Fragment {
@@ -206,7 +204,7 @@ public class secondFragment extends Fragment {
             }
         }
     }
-    class FetchIemsTask extends AsyncTask<Void,Void, List<GalleryItem>> {
+    class FetchIemsTask extends AsyncTask<Void,Void, List<GalleryItem>>{
         @Override
         protected List<GalleryItem> doInBackground(Void... params) {
             return new qweather(mlocation).fetchItems();

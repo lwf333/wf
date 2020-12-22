@@ -2,11 +2,9 @@ package com.example.weather_forecast;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,6 +14,7 @@ import androidx.fragment.app.Fragment;
 
 import java.lang.reflect.Field;
 import java.text.ParseException;
+import java.util.Collection;
 
 public class detail_fragment extends Fragment {
     detail_fragment(){
@@ -36,7 +35,7 @@ public class detail_fragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.detail_item_view_large,container,false);
+        View view = inflater.inflate(R.layout.detail_item_view,container,false);
         mweek = (TextView)view.findViewById(R.id.detail_week_large);
         mdate = (TextView)view.findViewById(R.id.detail_date_large);
         mmax = (TextView)view.findViewById(R.id.detail_max_large);
@@ -104,7 +103,7 @@ public class detail_fragment extends Fragment {
 
 
 
-    detail_fragment(GalleryItem galleryItem,String Temperature_unit){
+    detail_fragment(GalleryItem galleryItem, String Temperature_unit){
         mGalleryItem = galleryItem;
         mTemperature_unit = Temperature_unit;
     }

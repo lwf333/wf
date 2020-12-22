@@ -6,35 +6,44 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import java.util.List;
 
-public class Setting extends AppCompatActivity {
+public class Setting extends Activity {
     private String location;
     private String nlocation;
     private String mTemperature_unit;
 
     private LinearLayout setting_location;
     private LinearLayout setting_mTemperature_unit;
+    private LinearLayout setting_notification;
     private TextView name_location;
     private TextView name_mTemperature_unit;
+    private TextView name_notification;
+    private Data mData;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.seting_layout);
-        final Data mData = (Data)getApplication();
+
+        mData = (Data) getApplication();
         location = mData.getLocation();
         nlocation = mData.getNlocation();
         mTemperature_unit = mData.getTemperature_unit();
-
         setting_location = findViewById(R.id.setting_location);
+        name_location = findViewById(R.id.city);
+        name_location.setText(nlocation);
         setting_location.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,6 +55,26 @@ public class Setting extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 showunitPopMenu(setting_mTemperature_unit);
+            }
+        });
+
+        setting_notification = findViewById(R.id.notifications);
+        name_notification = (TextView)findViewById(R.id.notification);
+        if (!mData.isNotification()){
+            name_notification.setText("close");
+        } else {
+            name_notification.setText("open");
+        }
+        setting_notification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mData.isNotification()){
+                    mData.setNotification(false);
+                    name_notification.setText("close");
+                } else {
+                    mData.setNotification(true);
+                    name_notification.setText("open");
+                }
             }
         });
         name_location = (TextView)findViewById(R.id.city);
@@ -303,4 +332,5 @@ public class Setting extends AppCompatActivity {
             return null;
         }
     }
+
 }

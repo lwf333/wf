@@ -1,18 +1,12 @@
 package com.example.weather_forecast;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -24,17 +18,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import androidx.fragment.app.Fragment;
 
-import org.w3c.dom.Text;
-
 import java.lang.reflect.Field;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 
 public class firstFragment extends Fragment {
     private static final String TAG = "firstFragment";
-    private static final String EXTRA_ITEM = "com.example.weather_forecast.item";
+    private static final String EXTRA_POSITION = "com.example.weather_forecast.position";
 
     private RecyclerView mfirstRecyclerView;
     private List<GalleryItem> mItems = new ArrayList<>();
@@ -109,7 +101,7 @@ public class firstFragment extends Fragment {
                 public void onItemClick(int position, List<GalleryItem> galleryItems) {
                     Intent_GalleryItem intent_galleryItem = new Intent_GalleryItem(galleryItems.get(position));
                     Intent intent = new Intent(getActivity(),detail_activity.class);
-                    intent.putExtra(EXTRA_ITEM, intent_galleryItem);
+                    intent.putExtra(EXTRA_POSITION,position);
                     startActivity(intent);
                 }
             });

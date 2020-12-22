@@ -33,6 +33,7 @@ public class qAuto {
             JSONObject jsonObject = jsonBody.getJSONObject("now");
             item.setIcon(jsonObject.getString("icon"));
             item.setNow(jsonObject.getString("temp"));
+            item.setText(jsonObject.getString("text"));
         } catch (JSONException e) {
             e.printStackTrace();
         } catch (IOException e) {

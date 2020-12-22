@@ -1,23 +1,15 @@
 package com.example.weather_forecast;
 
-import android.app.Activity;
 import android.net.Uri;
-import android.os.Bundle;
 import android.util.Log;
-
-import androidx.annotation.Nullable;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.LinkedList;
+import java.util.Collection;
 import java.util.List;
 
 public class qweather{
@@ -51,9 +43,10 @@ public class qweather{
         }catch (JSONException je){
             Log.e(TAG, "Failed to parse JSON",je);
         }
+        Log.i("qw",items.get(0).getTextDay());
         return items;
     }
-    private void parseItems(List<GalleryItem> items,JSONObject jsonBody) throws IOException, JSONException {
+    private void parseItems(List<GalleryItem> items, JSONObject jsonBody) throws IOException, JSONException {
         JSONArray weatherJsonArray = jsonBody.getJSONArray("daily");
         for(int i = 0;i<weatherJsonArray.length();i++){
             JSONObject weatherJsonObject = weatherJsonArray.getJSONObject(i);

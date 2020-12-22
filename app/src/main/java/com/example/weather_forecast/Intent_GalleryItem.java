@@ -1,8 +1,9 @@
 package com.example.weather_forecast;
 
-import android.content.Intent;
 import android.os.Parcel;
 import android.os.Parcelable;
+
+import java.util.Collection;
 
 public class Intent_GalleryItem implements Parcelable {
     public Intent_GalleryItem(GalleryItem galleryItem){

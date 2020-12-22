@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentManager;
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -44,13 +45,8 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         final Data app = (Data)getApplication();
         location=app.getLocation();
-        Intent intent = new Intent(this,AutoReceiver.class);
-        intent.setAction("VIDEO_TIMER");
-        intent.putExtra(key, location);
-        PendingIntent sender = PendingIntent.getBroadcast(this,0,intent,0);
-        AlarmManager am = (AlarmManager)getSystemService(ALARM_SERVICE);
-        am.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime(),10*1000,sender);
         Temperature_unit = app.getTemperature_unit();
+        AutoReceiver.setServiceAlarm(this, app.isNotification());
         //检测是否为大设备
         if (findViewById(R.id.detail_large)!=null){
             isTwopage = true;
@@ -105,4 +101,7 @@ public class MainActivity extends AppCompatActivity {
         return secondFragment.newInstance(location,Temperature_unit);
     }
 
+    public static Intent newIntent(Context context){
+        return new Intent(context,MainActivity.class);
+    }
 }

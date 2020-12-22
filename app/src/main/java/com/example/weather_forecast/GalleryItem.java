@@ -3,6 +3,8 @@ package com.example.weather_forecast;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.Collection;
+
 public class GalleryItem{
     public String getIconDay() {
         return iconDay;

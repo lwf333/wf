@@ -62,6 +62,22 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="@string/weather_notifications"
+            android:textSize="16sp"
+            android:paddingTop="20dp"
+            android:paddingLeft="10dp"
+            android:textColor="@color/black">
+        </TextView>
+        <TextView
+            android:id="@+id/notification"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="16sp"
+            android:paddingLeft="10dp">
+        </TextView>
     </LinearLayout>
     <View
         android:layout_width="match_parent"
